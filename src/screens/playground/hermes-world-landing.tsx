@@ -77,10 +77,19 @@ const progression = [
 ]
 
 const todayDrops = [
-  ['Landing Page', 'A cinematic share surface for the HermesWorld reveal.'],
-  ['Roadmap', 'The build path from preview world to persistent agent RPG.'],
-  ['Feature List', 'Zones, companions, quests, sigils, multiplayer, and world systems.'],
-  ['Graphics Sprint', 'Next pass: in-game world art, logo lockup, and launch visuals.'],
+  ['Playable Preview', 'Enter the first public world layer: name your character, join Agora, talk, travel, and play.'],
+  ['Public Roadmap', 'The build path from preview world to persistent agent RPG, with graphics and accounts next.'],
+  ['Open Source Core', 'Hermes Workspace stays open source while HermesWorld becomes the playable surface.'],
+  ['Graphics Sprint', 'Next pass: believable characters, stronger world art, cleaner HUD, and gameplay clips.'],
+]
+
+const faqs = [
+  ['What is HermesWorld?', 'HermesWorld is a playable layer for Hermes Workspace: a persistent world where humans and AI agents appear as characters, take quests, unlock zones, and show progress visually.'],
+  ['Do I need to install Hermes Workspace to play?', 'No. The public game will run directly in your browser from hermes-world.ai. Developers can still run the same world inside Hermes Workspace locally.'],
+  ['Is this a finished game?', 'Not yet. This is the first playable preview: multiplayer presence, zones, quests, chat, companions, sigils, and world systems are being built in public.'],
+  ['How does saving work?', 'The preview starts with a browser profile. Cloud save and username claiming are next so your character, progress, and unlocks follow you between sessions.'],
+  ['Where do AI agents fit in?', 'Agents become visible companions. Instead of being hidden behind chat logs, they can follow you, report work, take quests, and eventually act inside the world.'],
+  ['Can I contribute?', 'Yes. Hermes Workspace is open source on GitHub, and HermesWorld is being developed in public. Issues, PRs, feedback, and gameplay clips all help.'],
 ]
 
 export function HermesWorldLanding() {
@@ -93,19 +102,19 @@ export function HermesWorldLanding() {
         <div className="relative z-10 max-w-2xl lg:pl-2">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#d9b35f]/30 bg-[#d9b35f]/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.24em] text-[#f8e4ac] shadow-[0_0_42px_rgba(217,179,95,.12)]">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-200 shadow-[0_0_18px_rgba(34,211,238,.95)]" />
-            HermesWorld Preview // Persistent Agent World
+            Playable Preview // Persistent Agent World
           </div>
 
           <h1 className="max-w-[760px] text-balance font-serif text-[clamp(3.6rem,7.5vw,8.4rem)] leading-[0.82] tracking-[-0.075em] text-[#fff6df] drop-shadow-[0_20px_80px_rgba(0,0,0,.65)]">
-            Your AI workspace is becoming a world.
+            Your AI agents are becoming a world.
           </h1>
 
           <p className="mt-7 max-w-xl text-pretty text-lg leading-8 text-[#d7d0bd]/72 sm:text-xl">
-            HermesWorld turns agents into companions inside a persistent world. Explore zones, complete quests, collect sigils, and watch agents keep working while the world keeps moving.
+            Enter a multiplayer agent world where your AI companions can follow, quest, report progress, and make invisible work visible.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="/playground" className="group inline-flex items-center justify-center rounded-xl border border-[#ffe7a3]/50 bg-[linear-gradient(180deg,#ffe7a3,#d9a63f)] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#11100b] shadow-[0_24px_80px_rgba(217,179,95,.28)] transition hover:-translate-y-0.5 hover:brightness-110">
+            <a href="/play" className="group inline-flex items-center justify-center rounded-xl border border-[#ffe7a3]/50 bg-[linear-gradient(180deg,#ffe7a3,#d9a63f)] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#11100b] shadow-[0_24px_80px_rgba(217,179,95,.28)] transition hover:-translate-y-0.5 hover:brightness-110">
               ▶ Play Now <span className="ml-2 transition group-hover:translate-x-1">→</span>
             </a>
             <a href={HERMES_REPO_URL} {...externalLinkProps} className="inline-flex items-center justify-center rounded-xl border border-[#d9b35f]/24 bg-[#0b1118]/78 px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#f8e4ac] shadow-[inset_0_1px_0_rgba(255,255,255,.08)] backdrop-blur-xl transition hover:border-[#d9b35f]/50 hover:bg-[#121823]">
@@ -117,19 +126,19 @@ export function HermesWorldLanding() {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#bfb49a]/60">
-            <span>Preview build</span>
+            <span>Browser playable</span>
             <span className="text-[#d9b35f]/55">✦</span>
-            <span>Persistent agents</span>
+            <span>No install needed</span>
             <span className="text-[#d9b35f]/55">✦</span>
-            <span>Zones, quests, sigils</span>
+            <span>Zones, quests, companions</span>
           </div>
 
           <div className="mt-7 max-w-xl rounded-2xl border border-[#d9b35f]/18 bg-[#05080e]/70 p-4 shadow-[0_20px_70px_rgba(0,0,0,.28),inset_0_1px_0_rgba(255,255,255,.06)] backdrop-blur-xl">
             <div className="flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#d9b35f]/35 bg-[#d9b35f]/12 text-lg shadow-[0_0_28px_rgba(217,179,95,.16)]">🏆</span>
               <div>
-                <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d9b35f]/70">Dropping today</div>
-                <div className="mt-1 text-sm font-bold leading-5 text-[#fff6df]">HermesWorld landing page, roadmap, feature list, and the first public build notes.</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d9b35f]/70">Playable preview</div>
+                <div className="mt-1 text-sm font-bold leading-5 text-[#fff6df]">Play in the browser today. Cloud save, richer accounts, believable characters, and gameplay clips are next.</div>
               </div>
             </div>
           </div>
@@ -142,7 +151,9 @@ export function HermesWorldLanding() {
       <TodayDropSection />
       <ZonesSection />
       <AgentsSection />
+      <GameplayPreviewSection />
       <SigilsSection />
+      <FaqSection />
       <FinalCta />
       <Footer />
     </main>
@@ -164,9 +175,9 @@ function Header() {
         <a href="#world" className="transition hover:text-[#f8e4ac]">World</a>
         <a href="#agents" className="transition hover:text-[#f8e4ac]">Agents</a>
         <a href="#sigils" className="transition hover:text-[#f8e4ac]">Sigils</a>
-        <a href="#preview" className="transition hover:text-[#f8e4ac]">Preview</a>
-        <a href="#today" className="transition hover:text-[#f8e4ac]">Today</a>
-        <a href="/playground" className="rounded-lg border border-[#ffe7a3]/55 bg-[linear-gradient(180deg,#ffe7a3,#d9a63f)] px-4 py-2 font-black text-[#11100b] shadow-[0_0_30px_rgba(217,179,95,.18)] transition hover:brightness-110">▶ Play</a>
+        <a href="#preview-video" className="transition hover:text-[#f8e4ac]">Preview</a>
+        <a href="#faq" className="transition hover:text-[#f8e4ac]">FAQ</a>
+        <a href="/play" className="rounded-lg border border-[#ffe7a3]/55 bg-[linear-gradient(180deg,#ffe7a3,#d9a63f)] px-4 py-2 font-black text-[#11100b] shadow-[0_0_30px_rgba(217,179,95,.18)] transition hover:brightness-110">▶ Play</a>
         <a href={HERMES_REPO_URL} {...externalLinkProps} className="rounded-lg border border-[#d9b35f]/30 bg-[#d9b35f]/10 px-4 py-2 text-[#f8e4ac] shadow-[0_0_30px_rgba(217,179,95,.08)] transition hover:bg-[#d9b35f]/18">GitHub</a>
       </nav>
     </header>
@@ -241,13 +252,13 @@ function TodayDropSection() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#d9b35f]/24 bg-[#d9b35f]/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-[#f8e4ac]">
               <span>🏆</span>
-              Launch drop
+              Playable build
             </div>
             <h2 className="mt-4 font-serif text-4xl font-bold leading-[0.92] tracking-[-0.055em] text-[#fff6df] sm:text-5xl lg:text-6xl">
-              Dropping HermesWorld today.
+              A browser world for humans and AI agents.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-[#d7d0bd]/62 sm:text-base">
-              Landing page, roadmap, feature list, and build notes first. Then we move straight into the game graphics sprint: world art, logo lockup, social cards, and clip-ready visuals.
+              Start in the public preview, then watch the world improve in public: cleaner UI, better maps, believable characters, accounts, cloud saves, and real gameplay videos.
             </p>
           </div>
 
@@ -344,6 +355,58 @@ function AgentsSection() {
   )
 }
 
+
+function GameplayPreviewSection() {
+  return (
+    <section id="preview-video" className="relative mx-auto max-w-[1560px] px-4 py-20 sm:px-6 lg:px-8">
+      <div className="grid gap-8 rounded-[2rem] border border-cyan-200/16 bg-[radial-gradient(circle_at_76%_18%,rgba(34,211,238,.16),transparent_34%),#061016] p-5 shadow-[0_38px_130px_rgba(0,0,0,.42)] md:grid-cols-[1.14fr_0.86fr] md:p-8 lg:p-10">
+        <div className="relative min-h-[360px] overflow-hidden rounded-[1.5rem] border border-[#d9b35f]/20 bg-[#03060a] shadow-[inset_0_1px_0_rgba(255,255,255,.06)]">
+          <img src="/hermesworld-world.png" alt="HermesWorld gameplay preview" className="absolute inset-0 h-full w-full object-cover opacity-72" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,transparent_24%,rgba(3,6,10,.54)_76%),linear-gradient(180deg,rgba(3,6,10,.08),rgba(3,6,10,.78))]" />
+          <div className="absolute left-5 top-5 rounded-full border border-white/12 bg-black/42 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-white/70 backdrop-blur">Gameplay video slot</div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#ffe7a3]/52 bg-[#f8e4ac]/16 text-3xl text-[#f8e4ac] shadow-[0_0_70px_rgba(217,179,95,.35)] backdrop-blur-xl">▶</div>
+          </div>
+          <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur-xl">
+            <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#f8e4ac]/72">Clip coming after graphics pass</div>
+            <div className="mt-1 text-sm leading-6 text-[#fff6df]">We are polishing Agora, characters, HUD, and world readability before dropping the main gameplay trailer.</div>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center">
+          <div className="text-[11px] font-black uppercase tracking-[0.24em] text-cyan-100/62">How it plays</div>
+          <h2 className="mt-3 font-serif text-4xl font-bold tracking-[-0.055em] text-[#fff6df] sm:text-6xl">Start as a player. Bring agents into the world.</h2>
+          <p className="mt-5 text-base leading-8 text-[#d7d0bd]/62">Claim a name, customize your character, enter the world, meet other builders, complete early quests, and watch your agents become visible companions instead of invisible background processes.</p>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <InfoPill title="1. Claim a name" copy="Start instantly in-browser. Cloud save comes next." />
+            <InfoPill title="2. Enter Agora" copy="Meet NPCs, players, companions, and live world events." />
+            <InfoPill title="3. Progress" copy="Complete quests, collect sigils, unlock zones and capabilities." />
+            <InfoPill title="4. Build in public" copy="The game, workspace, and agents evolve together." />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function FaqSection() {
+  return (
+    <section id="faq" className="relative mx-auto max-w-[1180px] px-4 py-20 sm:px-6 lg:px-8">
+      <div className="text-center">
+        <div className="text-[11px] font-black uppercase tracking-[0.24em] text-[#d9b35f]/70">FAQ</div>
+        <h2 className="mx-auto mt-3 max-w-3xl font-serif text-4xl font-bold tracking-[-0.055em] text-[#fff6df] sm:text-6xl">Everything before you enter.</h2>
+      </div>
+      <div className="mt-10 grid gap-4 md:grid-cols-2">
+        {faqs.map(([question, answer]) => (
+          <article key={question} className="rounded-2xl border border-[#d9b35f]/16 bg-[#071018]/78 p-5 shadow-[0_22px_80px_rgba(0,0,0,.32)] backdrop-blur-xl">
+            <h3 className="text-sm font-black uppercase tracking-[0.14em] text-[#f8e4ac]">{question}</h3>
+            <p className="mt-3 text-sm leading-7 text-[#d7d0bd]/58">{answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function SigilsSection() {
   return (
     <section id="sigils" className="relative mx-auto max-w-[1560px] px-4 py-20 sm:px-6 lg:px-8">
@@ -383,7 +446,7 @@ function FinalCta() {
         <h2 className="mt-3 font-serif text-4xl font-bold tracking-[-0.055em] text-[#fff6df] sm:text-6xl">Build with agents in a world, not a chat box.</h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#d7d0bd]/62">Enter HermesWorld and explore the first playable layer of Hermes Workspace: zones, quests, companions, sigils, and persistent agent progression.</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href="/playground" className="rounded-xl bg-[#f8e4ac] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#11100b] transition hover:-translate-y-0.5 hover:bg-white">▶ Play Now</a>
+          <a href="/play" className="rounded-xl bg-[#f8e4ac] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#11100b] transition hover:-translate-y-0.5 hover:bg-white">▶ Play Now</a>
           <a href={HERMES_REPO_URL} {...externalLinkProps} className="rounded-xl border border-white/12 bg-white/[0.055] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white/78 transition hover:bg-white/[0.1]">View GitHub</a>
           <a href={HERMES_ROADMAP_URL} {...externalLinkProps} className="rounded-xl border border-white/12 bg-white/[0.055] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white/78 transition hover:bg-white/[0.1]">Read Roadmap</a>
         </div>
@@ -403,7 +466,7 @@ function Footer() {
         <a href={HERMES_REPO_URL} {...externalLinkProps} className="hover:text-[#f8e4ac]">GitHub</a>
         <a href={HERMES_ROADMAP_URL} {...externalLinkProps} className="hover:text-[#f8e4ac]">Roadmap</a>
         <a href={HERMES_FEATURES_URL} {...externalLinkProps} className="hover:text-[#f8e4ac]">Feature List</a>
-        <a href="#today" className="hover:text-[#f8e4ac]">Today’s Drop</a>
+        <a href="#faq" className="hover:text-[#f8e4ac]">FAQ</a>
       </div>
     </footer>
   )

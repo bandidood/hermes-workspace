@@ -18,6 +18,7 @@ import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ProfilesRouteImport } from './routes/profiles'
 import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as PlayRouteImport } from './routes/play'
 import { Route as OperationsRouteImport } from './routes/operations'
 import { Route as MemoryRouteImport } from './routes/memory'
 import { Route as McpRouteImport } from './routes/mcp'
@@ -188,6 +189,11 @@ const ProfilesRoute = ProfilesRouteImport.update({
 const PlaygroundRoute = PlaygroundRouteImport.update({
   id: '/playground',
   path: '/playground',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayRoute = PlayRouteImport.update({
+  id: '/play',
+  path: '/play',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OperationsRoute = OperationsRouteImport.update({
@@ -836,6 +842,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/memory': typeof MemoryRoute
   '/operations': typeof OperationsRoute
+  '/play': typeof PlayRoute
   '/playground': typeof PlaygroundRoute
   '/profiles': typeof ProfilesRoute
   '/settings': typeof SettingsRouteWithChildren
@@ -973,6 +980,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/memory': typeof MemoryRoute
   '/operations': typeof OperationsRoute
+  '/play': typeof PlayRoute
   '/playground': typeof PlaygroundRoute
   '/profiles': typeof ProfilesRoute
   '/skills': typeof SkillsRoute
@@ -1110,6 +1118,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/memory': typeof MemoryRoute
   '/operations': typeof OperationsRoute
+  '/play': typeof PlayRoute
   '/playground': typeof PlaygroundRoute
   '/profiles': typeof ProfilesRoute
   '/settings': typeof SettingsRouteWithChildren
@@ -1249,6 +1258,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/memory'
     | '/operations'
+    | '/play'
     | '/playground'
     | '/profiles'
     | '/settings'
@@ -1386,6 +1396,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/memory'
     | '/operations'
+    | '/play'
     | '/playground'
     | '/profiles'
     | '/skills'
@@ -1522,6 +1533,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/memory'
     | '/operations'
+    | '/play'
     | '/playground'
     | '/profiles'
     | '/settings'
@@ -1660,6 +1672,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   MemoryRoute: typeof MemoryRoute
   OperationsRoute: typeof OperationsRoute
+  PlayRoute: typeof PlayRoute
   PlaygroundRoute: typeof PlaygroundRoute
   ProfilesRoute: typeof ProfilesRoute
   SettingsRoute: typeof SettingsRouteWithChildren
@@ -1823,6 +1836,13 @@ declare module '@tanstack/react-router' {
       path: '/playground'
       fullPath: '/playground'
       preLoaderRoute: typeof PlaygroundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play': {
+      id: '/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof PlayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/operations': {
@@ -2882,6 +2902,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   MemoryRoute: MemoryRoute,
   OperationsRoute: OperationsRoute,
+  PlayRoute: PlayRoute,
   PlaygroundRoute: PlaygroundRoute,
   ProfilesRoute: ProfilesRoute,
   SettingsRoute: SettingsRouteWithChildren,
