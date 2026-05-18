@@ -1,21 +1,17 @@
-import { BEARER_TOKEN } from './gateway-capabilities'
-
 export type PortableHistoryMessage = {
   role: string
   content: string
 }
 
-export function shouldReplayPortableHistory(options?: {
+export function shouldReplayPortableHistory(_options?: {
   localBaseUrl?: string
   bearerToken?: string
 }): boolean {
-  const localBaseUrl = options?.localBaseUrl?.trim() || ''
-  if (localBaseUrl) return true
-
-  const bearerToken =
-    typeof options?.bearerToken === 'string' ? options.bearerToken : BEARER_TOKEN
-
-  return !bearerToken.trim()
+  // Portable mode ultimately targets a stateless chat-completions endpoint.
+  // Even when the workspace authenticates to a gateway with a bearer token,
+  // the backend does not rehydrate prior turns server-side, so the workspace
+  // must replay the local transcript on every request.
+  return true
 }
 
 export function selectPortableConversationHistory(
