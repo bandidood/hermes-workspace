@@ -11,6 +11,7 @@ import { createOrUpdateMission, markMissionAssignmentDispatched, recordMissionCh
 import { appendSwarmMemoryEvent, buildSwarmStartupSnapshot } from '../../server/swarm-memory'
 import { rosterByWorkerId, type SwarmRosterWorker } from '../../server/swarm-roster'
 import { publishSwarmCheckpointNotification } from '../../server/swarm-notifications'
+import { ensureSwarmProfileConfig } from '../../server/swarm-profile-config'
 
 const HERMES_BIN_CANDIDATES = [
   process.env.HERMES_CLI_BIN,
@@ -594,6 +595,7 @@ async function ensureLiveTmuxSession(workerId: string): Promise<{ ok: true; tmux
   }
 
   const profilePath = getProfilePath(workerId)
+  ensureSwarmProfileConfig(profilePath)
   const cwd = resolveWorkerCwd(workerId)
   const hermesBin = resolveHermesBin()
   const launchCommand = buildHermesTmuxLaunchCommand({
@@ -628,7 +630,10 @@ async function ensureLiveTmuxSession(workerId: string): Promise<{ ok: true; tmux
   }
 
   const startupOutput = await captureTmuxPane(tmuxBin, sessionName)
-  if (startupOutput.includes('[Hermes worker exited with status')) {
+  // Match only at the start of a line so the echoed shell command's printf
+  // format string doesn't trigger a false positive startup-failure sentinel.
+  const exitedPattern = /(?:^|\n)\[Hermes worker exited with status/
+  if (exitedPattern.test(startupOutput)) {
     const sanitizedOutput = redactStartupOutput(startupOutput).slice(-4_000)
     const logsDir = join(profilePath, 'logs')
     mkdirSync(logsDir, { recursive: true })
